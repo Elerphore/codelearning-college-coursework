@@ -1,17 +1,18 @@
 <head>
-    <title>Course Selection</title>
+    <title>Theme Selection</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-
-<h1>Выберите курс</h1>
+<div>
+    <h1>{{ $themes['name'] }} : {{ $themes['text'] }}</h1>
+</div>
 
 <div class="theme-container">
-    @foreach ($courses as $course)
-        <a href="{{ "/theme/$course[id]" }}">
+    @foreach ($themes->tasks as $task)
+        <a href="{{ "/theme/task/$task[id]" }}">
             <div class="theme-container__item">
                 <div class="theme-container__item_desc">
-                    <p>{{ $course['name'] }}</p>
+                    <p>{{ $task['name'] }}</p>
                 </div>
             </div>
         </a>
