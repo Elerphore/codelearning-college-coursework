@@ -1,6 +1,7 @@
 <head>
     <title>Theme Selection</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <div>

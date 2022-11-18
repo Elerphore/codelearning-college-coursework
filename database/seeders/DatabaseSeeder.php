@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             ThemeSeeder::class,
             TaskSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

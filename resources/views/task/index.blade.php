@@ -1,6 +1,7 @@
 <head>
     <title>{{ $task['name'] }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <h1>{{ $task['name'] }}</h1>
