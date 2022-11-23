@@ -139,3 +139,16 @@ input[type="file"], input[type="submit"], input[type="button"] {
 .label:valid + span {
     color: #ffffff;
 }
+
+.introduction-block {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+
+    text-align: center;
+}
+
+.introduction-block__title, .introduction-block__description {
+    flex-basis: 100%;
+}

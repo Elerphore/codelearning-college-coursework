@@ -13,8 +13,8 @@
                 @csrf
 
                 <a class="text-sm text-gray-700 dark:text-gray-500 underline"
-                   href="{{ route('logout')  }}"
-                   onclick="event.preventDefault(); this.closest('form').submit();">
+                    href="{{ route('logout')  }}"
+                    onclick="event.preventDefault(); this.closest('form').submit();">
                     {{ __('Выйти') }}
                 </a>
             </form>
@@ -28,13 +28,16 @@
     </div>
 @endif
 
-@if (Route::has('login'))
-    @auth
-        <h1>Добро пожаловать {{ Auth::user()->name  }}</h1>
-    @else
-        <div class="introduction-block">
-            <h1 class="introduction-block__title">Добро пожаловать на Code Learning!</h1>
-            <p class="introduction-block__description">Сайт для изучения программирования!</p>
-        </div>
-    @endauth
-@endif
+<h1>Выберите курс</h1>
+
+<div class="theme-container">
+    @foreach ($courses as $course)
+        <a href="{{ "/theme/$course[id]" }}">
+            <div class="theme-container__item">
+                <div class="theme-container__item_desc">
+                    <p>{{ $course['name'] }}</p>
+                </div>
+            </div>
+        </a>
+    @endforeach
+</div>

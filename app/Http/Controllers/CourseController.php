@@ -9,6 +9,6 @@ class CourseController extends Controller
 {
     public function index() {
         $courses = Course::all();
-        return view('index', ['courses' => $courses]);
+        return view('/course/index', ['courses' => $courses]);
     }
 }

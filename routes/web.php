@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/', [CourseController::class, 'index']);
+Route::get('/course', [CourseController::class, 'index']);
 Route::get('/theme/{index}', [ThemeController::class, 'index'])->middleware(['auth']);
 Route::get('/theme/task/{index}', [TaskController::class, 'index'])->middleware(['auth']);
 
