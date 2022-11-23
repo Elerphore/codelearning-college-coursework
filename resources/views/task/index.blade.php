@@ -23,10 +23,16 @@
     </div>
 
     <div class="task-block__item task-block__item_c answer_input">
-        <form action="" method="post">
+        <form action="{{ route('task.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
 
             <label class="label">
-                <input type="file" required/>
+                <a href="/" class="answer_input_button"></a>
+                <p>На главную</p>
+            </label>
+
+            <label class="label">
+                <input name="file" type="file"/>
                 <p>Загрузить работу</p>
             </label>
 
@@ -34,12 +40,6 @@
                 <input class="answer_input_button" type="submit" value="Сохранить"/>
                 <p>Отправить</p>
             </label>
-
-            <label class="label">
-                <a href="/" class="answer_input_button" />
-                <p>На главную</p>
-            </label>
-
         </form>
     </div>
 

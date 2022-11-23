@@ -1,24 +1,35 @@
 <head>
     <title>Course Selection</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="{{ asset('js/app.js') }}"></script>
 </head>
 
 @if (Route::has('login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         @auth
-            <p class="text-sm text-gray-700 dark:text-gray-500 underline">Добро пожаловать {{ Auth::user()->name  }}</p>
+            <div class="flex gap-2">
+                <p
+                    class="btn btn-primary mr-2"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample"
+                >Меню
+                </p>
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
+                <p class="btn btn-primary text-sm text-gray-700 dark:text-gray-500 underline">Добро пожаловать {{ Auth::user()->name  }}</p>
 
-                <a class="text-sm text-gray-700 dark:text-gray-500 underline"
-                   href="{{ route('logout')  }}"
-                   onclick="event.preventDefault(); this.closest('form').submit();">
-                    {{ __('Выйти') }}
-                </a>
-            </form>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="btn btn-primary text-sm text-gray-700 dark:text-gray-500 underline"
+                       href="{{ route('logout')  }}"
+                       onclick="event.preventDefault(); this.closest('form').submit();">
+                        {{ __('Выйти') }}
+                    </a>
+                </form>
+
+            </div>
         @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Войти</a>
 
@@ -39,3 +50,5 @@
         </div>
     @endauth
 @endif
+
+@include('sidebar/sidebar')
