@@ -1,10 +1,7 @@
-<head>
-    <title>Theme Selection</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-</head>
+@extends('layouts/main')
 
-<div>
+@section('content')
+<div class="mb-4">
     <h1>{{ $themes['name'] }} : {{ $themes['text'] }}</h1>
 </div>
 
@@ -19,3 +16,4 @@
         </a>
     @endforeach
 </div>
+@endsection

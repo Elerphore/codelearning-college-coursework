@@ -1,9 +1,6 @@
-<head>
-    <title>{{ $task['name'] }}</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-</head>
+@extends('layouts/main')
 
+@section('content')
 <h1>{{ $task['name'] }}</h1>
 
 <div class="task-block">
@@ -23,24 +20,24 @@
     </div>
 
     <div class="task-block__item task-block__item_c answer_input">
-        <form action="{{ route('task.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="flex flex-wrap justify-content-center" action="{{ route('task.store', ['index' => $task['id']]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <label class="label">
+            <label class="label btn btn-outline-secondary flex flex-wrap align-items-center align-content-center">
                 <a href="/" class="answer_input_button"></a>
                 <p>На главную</p>
             </label>
 
-            <label class="label">
+            <label class="label btn btn-outline-secondary">
                 <input name="file" type="file"/>
                 <p>Загрузить работу</p>
             </label>
 
-            <label class="label">
+            <label class="label btn btn-outline-secondary">
                 <input class="answer_input_button" type="submit" value="Сохранить"/>
                 <p>Отправить</p>
             </label>
         </form>
     </div>
-
 </div>
+@endsection

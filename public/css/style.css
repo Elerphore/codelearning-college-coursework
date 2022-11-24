@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap);
-* {
-
+a {
+    text-decoration: none !important;
 }
 
 body {
@@ -43,7 +43,8 @@ p {
     cursor: pointer;
     display: flex;
     justify-content: center;
-    border: 2px orange solid;
+    border: 2px #6c757d solid;
+    color: #6c757d;
     border-radius: 5px;
     transition: .3s;
 }
@@ -61,9 +62,9 @@ p {
 
 .theme-container__item:hover {
     transition: .3s;
-    background: mediumpurple;
+    background: #6c757d;
     color: white;
-    border-color: purple;
+    border-color: #6c757d;
 }
 
 .theme-container__item_desc {
@@ -126,6 +127,11 @@ input[type="file"], input[type="submit"], input[type="button"] {
     background: #dddddd;
     /*display: inline-block;*/
 }
+.label > p {
+    margin: 0;
+    padding: 0;
+}
+
 .label:hover {
     background: #5cbd95;
 }

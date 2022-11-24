@@ -13,6 +13,14 @@
                 <li class="list-group-item list-group-item-action">Ваши курсы</li>
             </a>
 
+            @auth
+                @if(Auth::user()->role == 1)
+                    <a href="{{ route('admin.grade') }}">
+                        <li class="list-group-item list-group-item-action">Оценка работ</li>
+                    </a>
+                @endif
+            @endauth
+
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="{{ route('logout')  }}"

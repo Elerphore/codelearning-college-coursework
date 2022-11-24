@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\UserResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -12,10 +14,16 @@ class TaskController extends Controller
         return view('/task/index', ['task' => $task]);
     }
 
-    public function store(Request $request) {
+    public function store(int $index, Request $request) {
         $request->validate(['file' => 'required|mimes:zip,7z']);
         $fileName = time().'.'.$request->file('file')->extension();
-        $request->file('file')->move(public_path('uploads'), $fileName);
+        $request->file('file')->move(public_path('uploads/'.Auth::user()->id), $fileName);
+
+        UserResponse::create([
+            'name' => $fileName,
+            'user_id' => Auth::user()->id,
+            'task_id' => $index
+        ]);
 
         return back();
     }
