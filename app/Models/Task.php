@@ -12,4 +12,8 @@ class Task extends Model
     public function userResponses() {
         return $this->hasMany(UserResponse::class, 'task_id');
     }
+
+    public function theme() {
+        return $this->belongsTo(Theme::class, 'theme_id');
+    }
 }

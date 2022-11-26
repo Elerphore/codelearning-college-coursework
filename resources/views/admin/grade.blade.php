@@ -1,54 +1,13 @@
-@include('navbar/index')
-@include('sidebar/sidebar')
+@extends('layouts/main')
 
-
-<div>
-    <h1>Список выполненных заданий</h1>
-    <div class="mt-4">
-        <ul class="list-group">
-            @forelse ($responses as $response)
-
-                <li class="list-group-item">
-                    <p>Пользователь {{ $response->user->name }}</p>
-                    <p>Имя папки {{ $response->name }}</p>
-                    <p>Выполненное задание {{ $response->task->name }}</p>
-
-                    <div>
-                        <div class="d-grid gap-2">
-                            <a href="{{ route('admin.grade.download', ['userId' => $response->user->id, 'taskId' => $response->task->id]) }}"
-                               class="btn btn-outline-secondary mb-4">Скачать
-                            </a>
-                        </div>
-
-                            <form action="{{ route('admin.grade.store', ['userId' => $response->user->id, 'taskId' => $response->task->id]) }}" method="POST">
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="addon-wrapping">Комментарий</span>
-                                    <input type="text" name="commentary" id="commentary" class="form-control" placeholder="Комментарий" value="{{  $response->commentary }}">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="grade">Оценка</label>
-                                    <select class="form-select" name="grade" id="grade">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            <option
-                                                {{ $response->grade == $i ? 'selected' : ''}}
-                                                value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-secondary" type="submit">Сохранить</button>
-                                </div>
-                            </form>
-
-                    </div>
-                </li>
-
-            @empty
-                <p>Никто ещё не выложил задания</p>
-            @endforelse
-        </ul>
-    </div>
+@section('content')
+<div class="d-flex justify-content-between container-lg">
+    <?php $conditions = [true, false] ?>
+    @foreach($conditions as $condition)
+        <div class="mt-4">
+            <h1 class="text-center text-xl">{{ $condition ? 'Новые задания:' : 'Просмотренные задания:' }}</h1>
+            @include('admin/tasklist', ['responses' => $responses, 'condition' => $condition])
+        </div>
+    @endforeach
 </div>
+@endsection

@@ -18,6 +18,10 @@
                     <a href="{{ route('admin.grade') }}">
                         <li class="list-group-item list-group-item-action">Оценка работ</li>
                     </a>
+
+                    <a href="{{ route('admin.permission') }}">
+                        <li class="list-group-item list-group-item-action">Доступ к курсам</li>
+                    </a>
                 @endif
             @endauth
 

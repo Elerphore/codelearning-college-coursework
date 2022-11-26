@@ -21,7 +21,12 @@ class TaskController extends Controller
 
     public function practice(int $index) {
         $task = Task::find($index);
-        return view('/task/practice', ['task' => $task]);
+
+        $userResponse = UserResponse::where('user_id', '=', Auth::user()->id)
+            ->where('task_id', '=', $index)
+            ->first();
+
+        return view('/task/practice', ['task' => $task, 'userResponse' => $userResponse]);
     }
 
     public function store(int $index, Request $request) {
