@@ -14,6 +14,16 @@ class TaskController extends Controller
         return view('/task/index', ['task' => $task]);
     }
 
+    public function theory(int $index) {
+        $task = Task::find($index);
+        return view('/task/theory', ['task' => $task]);
+    }
+
+    public function practice(int $index) {
+        $task = Task::find($index);
+        return view('/task/practice', ['task' => $task]);
+    }
+
     public function store(int $index, Request $request) {
         $request->validate(['file' => 'required|mimes:zip,7z']);
         $fileName = time().'.'.$request->file('file')->extension();

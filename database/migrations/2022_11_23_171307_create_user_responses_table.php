@@ -19,6 +19,7 @@ class CreateUserResponsesTable extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('task_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->integer('grade')->nullable()->default(null);
+            $table->string('commentary')->nullable()->default(null);
             $table->timestamps();
         });
     }

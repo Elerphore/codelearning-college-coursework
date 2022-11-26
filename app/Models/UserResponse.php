@@ -13,6 +13,8 @@ class UserResponse extends Model
         'name',
         'user_id',
         'task_id',
+        'grade',
+        'commentary'
     ];
 
     public function user() {

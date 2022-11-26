@@ -7,7 +7,7 @@
 
 <div class="theme-container">
     @foreach ($themes->tasks as $task)
-        <a href="{{ "/theme/task/$task[id]" }}">
+        <a href="{{ "/theme/task/theory/$task[id]" }}">
             <div class="theme-container__item">
                 <div class="theme-container__item_desc">
                     <p>{{ $task['name'] }}</p>

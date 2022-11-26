@@ -33,7 +33,7 @@
             <a href="{{ route('login') }}" class="btn btn-outline-secondary text-sm text-gray-700 dark:text-gray-500 underline">Войти</a>
 
             @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="btn btn-outline-secondary ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Регистрация</a>
+                <a href="{{ route('register') }}" class="btn btn-outline-secondary text-sm text-gray-700 dark:text-gray-500 underline">Регистрация</a>
             @endif
         @endauth
     </div>

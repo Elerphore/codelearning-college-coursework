@@ -24,7 +24,13 @@ Route::get('/theme/{index}', [ThemeController::class, 'index'])->middleware(['au
 Route::post('/theme/task/store/{index}', [TaskController::class, 'store'])->middleware(['auth'])->name('task.store');
 Route::get('/theme/task/{index}', [TaskController::class, 'index'])->middleware(['auth']);
 
+Route::get('/theme/task/theory/{index}', [TaskController::class, 'theory'])->middleware(['auth']);
+Route::get('/theme/task/practice/{index}', [TaskController::class, 'practice'])->middleware(['auth'])->name('task.practice');
+
 Route::get('/admin/grade', [AdminController::class, 'grade'])->middleware(['auth'])->name('admin.grade');
+
+Route::get('/admin/grade/task/{userId}/{taskId}', [AdminController::class, 'downloadTask'])->middleware(['auth'])->name('admin.grade.download');
+Route::post('/admin/grade/task/{userId}/{taskId}', [AdminController::class, 'store'])->middleware(['auth'])->name('admin.grade.store');
 
 
 require __DIR__.'/auth.php';
