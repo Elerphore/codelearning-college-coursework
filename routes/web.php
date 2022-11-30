@@ -30,6 +30,8 @@ Route::get('/theme/task/practice/{index}', [TaskController::class, 'practice'])-
 Route::get('/admin/grade', [AdminController::class, 'grade'])->middleware(['auth'])->name('admin.grade');
 Route::get('/admin/permission', [AdminController::class, 'permission'])->middleware(['auth'])->name('admin.permission');
 
+Route::post('/admin/permission/{userId}', [AdminController::class, 'storePermission'])->middleware(['auth'])->name('admin.permission.store');
+
 Route::get('/admin/grade/task/{userId}/{taskId}', [AdminController::class, 'downloadTask'])->middleware(['auth'])->name('admin.grade.download');
 Route::post('/admin/grade/task/{userId}/{taskId}', [AdminController::class, 'store'])->middleware(['auth'])->name('admin.grade.store');
 

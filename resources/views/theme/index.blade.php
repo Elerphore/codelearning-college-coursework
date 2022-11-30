@@ -7,10 +7,10 @@
 
 <div class="theme-container">
     @foreach ($themes->tasks as $task)
-        <a href="{{ "/theme/task/theory/$task[id]" }}">
-            <div class="theme-container__item">
+        <a href="{{ "/theme/task/theory/$task[id]" }}" class="{{ Auth::user()->task_id == $task['id'] ? '' : 'unavailable' }}">
+            <div class="theme-container__item {{ Auth::user()->task_id == $task['id'] ? '' : 'theme-container__item_disabled' }}">
                 <div class="theme-container__item_desc">
-                    <p>{{ $task['name'] }}</p>
+                    <p>{{ $task->name }}</p>
                 </div>
             </div>
         </a>

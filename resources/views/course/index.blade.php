@@ -11,8 +11,20 @@
 
 <div class="theme-container">
     @foreach ($courses as $course)
-        <a href="{{ "/theme/$course[id]" }}">
-            <div class="theme-container__item">
+            <?php
+            $themes = $course->theme;
+            $tasksId = [];
+
+            foreach ($themes as $theme) {
+                foreach($theme->tasks as $task) {
+                    array_push($tasksId, $task->id);
+                }
+            }
+
+            ?>
+
+        <a href="{{ "/theme/$course[id]" }}" class="{{ in_array(Auth::user()->task_id, $tasksId) ? '' : 'unavailable' }}">
+            <div class="theme-container__item {{ in_array(Auth::user()->task_id, $tasksId) ? '' : 'theme-container__item_disabled' }}">
                 <div class="theme-container__item_desc">
                     <p>{{ $course['name'] }}</p>
                 </div>

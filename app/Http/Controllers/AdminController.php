@@ -22,6 +22,16 @@ class AdminController extends Controller
         return view('admin/curs-grant')->with('users', $users)->with('tasks', $tasks);
     }
 
+    public function storePermission(int $userId, Request $request) {
+        $user = User::find($userId);
+        $selected_task = $request['selected_task'];
+
+        $user->task_id = $selected_task;
+        $user->save();
+
+        return back();
+    }
+
     public function downloadTask(int $userId, int $taskId) {
         $userResponse = UserResponse::where('user_id', '=', $userId)
                                         ->where('task_id', '=', $taskId)

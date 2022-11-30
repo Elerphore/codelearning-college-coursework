@@ -34,11 +34,22 @@ class TaskController extends Controller
         $fileName = time().'.'.$request->file('file')->extension();
         $request->file('file')->move(public_path('uploads/'.Auth::user()->id), $fileName);
 
-        UserResponse::create([
-            'name' => $fileName,
-            'user_id' => Auth::user()->id,
-            'task_id' => $index
-        ]);
+        $response = UserResponse::where('user_id', Auth::user()->id)->where('task_id', $index)->first();
+
+        if($response != null) {
+            $response->update([
+               'name' => $fileName
+            ]);
+        }
+        else {
+            UserResponse::create([
+                'name' => $fileName,
+                'user_id' => Auth::user()->id,
+                'task_id' => $index
+            ]);
+        }
+
+;
 
         return back();
     }

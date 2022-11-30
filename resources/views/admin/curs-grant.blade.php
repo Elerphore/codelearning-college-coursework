@@ -9,15 +9,22 @@
                     <p class="card-text">Имя: {{ $user->name }}</p>
                     <p class="card-text">Почта: {{ $user->email }}</p>
 
-                    <div class="input-group">
-                        <label class="input-group-text" for="inputGroupSelect01">Доступное задание</label>
-                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            @foreach($tasks as $task)
-                                <option value="{{ $task->id }}"> {{ $task->theme->name }} : {{ $task->name }}</option>
-                            @endforeach
-                        </select>
-                        <button class="btn btn-outline-secondary" type="button">Изменить</button>
-                    </div>
+                    <form action="{{ route('admin.permission.store', ['userId' => $user->id]) }}" method="post">
+                        @csrf
+                        <div class="input-group">
+
+                            <label class="input-group-text" for="inputGroupSelect01">Доступное задание</label>
+                            <select class="form-select" id="selected_task" name="selected_task">
+                                @foreach($tasks as $task)
+                                    <option value="{{ $task->id }}" {{ $task->id == $user->task_id ? 'selected' : '' }}>
+                                        {{ $task->theme->name }} : {{ $task->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <button class="btn btn-outline-secondary" type="submit">Изменить</button>
+                        </div>
+                    </form>
 
                 </div>
             </div>

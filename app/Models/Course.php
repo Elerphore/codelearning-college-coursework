@@ -10,6 +10,6 @@ class Course extends Model
     use HasFactory;
 
     public function theme() {
-        return $this->hasOne(Theme::class, 'course_id');
+        return $this->hasMany(Theme::class, 'course_id');
     }
 }
