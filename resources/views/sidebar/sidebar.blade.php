@@ -32,6 +32,23 @@
                     <button class="list-group-item list-group-item-action">{{ __('Выйти') }}</button>
                 </a>
             </form>
+
+            @auth
+                <p class="text-center">Ваш прогресс</p>
+                <div class="progress progress-striped active">
+                    <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            @endauth
         </ul>
     </div>
 </div>
+
+<script>
+    fetch('http://codelearning/api/completion')
+        .then((response) => response.json())
+        .then((data) => {
+            let progress = document.getElementById('progress')
+            progress.style = `width: ${data.completion}`
+            progress.ariaValueNow = data.completion
+        });
+</script>

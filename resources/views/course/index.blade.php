@@ -1,13 +1,16 @@
-<head>
-    <title>Course Selection</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-</head>
+@extends('layouts/main')
+@section('content')
 
-@include('navbar/index')
-@include('sidebar/sidebar')
+<div class="align-self-stretch">
+    <p class="text-center">Ваш прогресс</p>
+    <div class="progress progress-striped active">
+        <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ $completion }}" aria-valuemin="0" aria-valuemax="100" style="width: {{$completion}}%"></div>
+    </div>
+</div>
 
-<h1 class="mb-4">Выберите курс</h1>
+<div class="mb-4 mt-6">
+    <h1 class="mb-4">Выберите курс</h1>
+</div>
 
 <div class="theme-container">
     @foreach ($courses as $course)
@@ -32,3 +35,4 @@
         </a>
     @endforeach
 </div>
+@endsection

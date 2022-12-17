@@ -1,4 +1,6 @@
 @include('navbar/index')
 @include('sidebar/sidebar')
 
-@yield('content')
+<div class="flex flex-column align-items-center container-lg">
+    @yield('content')
+</div>

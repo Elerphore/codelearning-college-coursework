@@ -1,7 +1,16 @@
 @extends('layouts/main')
 
 @section('content')
-<div class="mb-4">
+
+
+<div class="align-self-stretch">
+    <p class="text-center">Ваш прогресс</p>
+    <div class="progress progress-striped active">
+        <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ $completion }}" aria-valuemin="0" aria-valuemax="100" style="width: {{$completion}}%"></div>
+    </div>
+</div>
+
+<div class="mb-4 mt-6">
     <h1>{{ $themes['name'] }} : {{ $themes['text'] }}</h1>
 </div>
 
